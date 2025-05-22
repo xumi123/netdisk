@@ -40,6 +40,23 @@
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
+
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>8.0.26</version>
+        </dependency>
+
+        <!-- 日志依赖（可选，但强烈推荐） -->
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <version>2.0.7</version> <!-- 最新稳定版 -->
+        </dependency>
+
+        <!-- 显式声明 Logback 1.4+（与 Spring Boot 3.4.5 兼容） -->
+
+
     </dependencies>
 
     <build>
