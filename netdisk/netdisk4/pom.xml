@@ -54,6 +54,16 @@
             <version>2.0.7</version> <!-- 最新稳定版 -->
         </dependency>
 
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-jpa</artifactId>
+        </dependency>
+        <!-- 日志依赖 -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-logging</artifactId>
+        </dependency>
+
         <!-- 显式声明 Logback 1.4+（与 Spring Boot 3.4.5 兼容） -->
 
 

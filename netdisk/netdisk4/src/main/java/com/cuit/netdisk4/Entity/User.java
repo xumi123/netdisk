@@ -1,9 +1,13 @@
 package com.cuit.netdisk4.Entity;
 
+import jakarta.persistence.*;
 import java.sql.Timestamp;
 
+@Entity
+@Table(name = "users")
 public class User {
-
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     //用户id
     private int userId;
     //用户名
@@ -30,7 +34,6 @@ public class User {
     public User() {
     }
 
-    // getter和setter方法
     public int getUserId() {
         return userId;
     }
@@ -54,6 +57,7 @@ public class User {
     public void setPasswordHash(String passwordHash) {
         this.passwordHash = passwordHash;
     }
+
     public String getEmail() {
         return email;
     }
@@ -74,7 +78,7 @@ public class User {
         return isVip;
     }
 
-    public void setVip(boolean vip) {
+    public void setIsVip(boolean vip) {
         isVip = vip;
     }
 
@@ -117,5 +121,6 @@ public class User {
     public void setUpdateTime(Timestamp updateTime) {
         this.updateTime = updateTime;
     }
+
 
 }
