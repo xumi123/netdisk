@@ -71,6 +71,19 @@
 
         <!-- 显式声明 Logback 1.4+（与 Spring Boot 3.4.5 兼容） -->
 
+        <!-- MyBatis-Plus 启动器 -->
+        <dependency>
+            <groupId>com.baomidou</groupId>
+            <artifactId>mybatis-plus-boot-starter</artifactId>
+            <version>3.5.3.1</version>
+        </dependency>
+
+        <!-- MyBatis 分页插件 -->
+        <dependency>
+            <groupId>com.github.pagehelper</groupId>
+            <artifactId>pagehelper-spring-boot-starter</artifactId>
+            <version>1.4.6</version>
+        </dependency>
 
     </dependencies>
 
