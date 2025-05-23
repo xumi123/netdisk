@@ -5,7 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="02d19288-2921-4cff-883a-5733f6690913" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/netdisk/netdisk4/src/main/java/com/cuit/netdisk4/Dao/ShareDao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/netdisk/netdisk4/src/main/resources/mapper/ShareDao.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/netdisk/netdisk4/src/main/java/com/cuit/netdisk4/Netdisk4Application.java" beforeDir="false" afterPath="$PROJECT_DIR$/netdisk/netdisk4/src/main/java/com/cuit/netdisk4/Netdisk4Application.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -16,6 +18,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Class" />
+        <option value="spring-beans.schema" />
       </list>
     </option>
   </component>
@@ -80,7 +83,8 @@
       <option name="presentableId" value="Default" />
       <updated>1747920096769</updated>
       <workItem from="1747920097853" duration="1949000" />
-      <workItem from="1748001245166" duration="1785000" />
+      <workItem from="1748001245166" duration="2937000" />
+      <workItem from="1748004205628" duration="425000" />
     </task>
     <servers />
   </component>

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cuit.netdisk4.Dao.ShareDao">
+
+    <!-- 根据用户ID查询分享记录 -->
+    <select id="selectByUserId" resultType="com.cuit.netdisk4.Entity.Share">
+        SELECT * FROM share_records
+        WHERE user_id = #{userId}
+        ORDER BY share_time DESC
+    </select>
+
+    <!-- 根据接收者ID查询分享记录 -->
+    <select id="selectByReceiverId" resultType="com.cuit.netdisk4.Entity.Share">
+        SELECT * FROM share_records
+        WHERE receiver_id = #{receiverId}
+          AND (expire_time IS NULL OR expire_time > NOW())
+        ORDER BY share_time DESC
+    </select>
+
+    <!-- 根据文件ID查询分享记录 -->
+    <select id="selectByFileId" resultType="com.cuit.netdisk4.Entity.Share">
+        SELECT * FROM share_records
+        WHERE file_id = #{fileId}
+        ORDER BY share_time DESC
+    </select>
+
+    <!-- 查询用户对文件的访问权限 -->
+    <select id="selectAccessPermission" resultType="java.lang.Integer">
+        SELECT access_permission
+        FROM share_records
+        WHERE file_id = #{fileId}
+          AND (receiver_id = #{userId} OR receiver_id IS NULL)
+          AND (expire_time IS NULL OR expire_time > NOW())
+            LIMIT 1
+    </select>
+
+    <!-- 统计文件的分享次数 -->
+    <select id="countSharesByFileId" resultType="java.lang.Integer">
+        SELECT COUNT(*) FROM share_records
+        WHERE file_id = #{fileId}
+    </select>
+
+    <!-- 删除过期的分享记录 -->
+    <delete id="deleteExpiredShares">
+        DELETE FROM share_records
+        WHERE expire_time IS NOT NULL AND expire_time < NOW()
+    </delete>
+</mapper>
