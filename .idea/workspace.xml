@@ -4,14 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="02d19288-2921-4cff-883a-5733f6690913" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/netdisk/netdisk4/src/main/java/com/cuit/netdisk4/repository/ShareRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/netdisk/netdisk4/src/main/java/com/cuit/netdisk4/service/ShareService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/netdisk/netdisk4/src/main/java/com/cuit/netdisk4/service/ShareServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/netdisk/netdisk4/src/main/java/com/cuit/netdisk4/Entity/Share.java" beforeDir="false" afterPath="$PROJECT_DIR$/netdisk/netdisk4/src/main/java/com/cuit/netdisk4/Entity/Share.java" afterDir="false" />
-    </list>
+    <list default="true" id="02d19288-2921-4cff-883a-5733f6690913" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -94,7 +87,7 @@
       <updated>1747920096769</updated>
       <workItem from="1747920097853" duration="1949000" />
       <workItem from="1748001245166" duration="2937000" />
-      <workItem from="1748004205628" duration="2764000" />
+      <workItem from="1748004205628" duration="3348000" />
     </task>
     <servers />
   </component>
