@@ -6,42 +6,55 @@ import lombok.Data;
 
 import java.sql.Timestamp;
 
-@Entity
-@Table(name = "resource_files")
 @Data
-public class ResourceFile {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer fileId;
+@TableName("file_resource")
+@ApiModel("文件资源实体")
+public class FileResource implements Serializable {
+    private static final long serialVersionUID = 1L;
 
-    @Column(nullable = false)
-    private Integer userId;
+    @TableId(type = IdType.AUTO)
+    @ApiModelProperty("文件ID")
+    private Long id;
 
-    private Integer folderId; // 0表示根目录
+    @ApiModelProperty("用户ID")
+    private Long userId;
 
-    @Column(nullable = false, length = 255)
+    @ApiModelProperty("父目录ID(0表示根目录)")
+    private Long parentId;
+
+    @ApiModelProperty("文件名")
     private String fileName;
 
-    @Column(nullable = false, length = 512)
-    private String filePath;
-
-    @Column(nullable = false)
-    private Long fileSize;
-
-    @Column(nullable = false, length = 50)
+    @ApiModelProperty("文件类型")
     private String fileType;
 
-    @Column(nullable = false)
-    private Boolean isPublic = false;
+    @ApiModelProperty("文件存储路径")
+    private String filePath;
 
+    @ApiModelProperty("文件大小(字节)")
+    private Long fileSize;
+
+    @ApiModelProperty("文件哈希值")
+    private String fileHash;
+
+    @ApiModelProperty("是否为目录")
+    private Boolean isDirectory;
+
+    @ApiModelProperty("是否公开")
+    private Boolean isPublic;
+
+    @ApiModelProperty("预览URL")
     private String previewUrl;
 
-    @Column(nullable = false, updatable = false, insertable = false, columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
-    private Timestamp createTime;
+    @ApiModelProperty("创建时间")
+    private Date createTime;
 
-    @Column(insertable = false, columnDefinition = "TIMESTAMP NULL ON UPDATE CURRENT_TIMESTAMP")
-    private Timestamp updateTime;
+    @ApiModelProperty("更新时间")
+    private Date updateTime;
 
-    @Column private Boolean deleted = false; // 新增逻辑删除标记
+    @ApiModelProperty("是否删除")
+    private Boolean deleted;
+
+    @ApiModelProperty("删除时间")
+    private Date deleteTime;
 }
-
