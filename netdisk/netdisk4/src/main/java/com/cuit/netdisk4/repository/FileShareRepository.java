@@ -1,6 +1,6 @@
 
 
-import com.example.net_disk.entity.FileShare;
+import com.cuit.netdisk4.entity.FileShare;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface FileShareRepository extends JpaRepository<FileShare, Long> {
