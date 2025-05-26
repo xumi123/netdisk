@@ -1,5 +1,5 @@
 
-import com.example.net_disk.entity.FileShare;
+import com.cuit.netdisk4.entity.FileShare;
 
 public interface FileShareService {
     FileShare createShareLink(Long fileId, Long userId);
