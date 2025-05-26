@@ -11,16 +11,16 @@ import java.time.LocalDateTime;
 
 @Entity
 @Data
-public class FileShare {
+public class RecycleBin {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private Long fileId;
     private Long userId;
-    private String shareCode;
+    private LocalDateTime deleteTime;
     private LocalDateTime expireTime;
-    private int visitCount;
+    private String deleteReason;
 
     // Getters and Setters
 }
