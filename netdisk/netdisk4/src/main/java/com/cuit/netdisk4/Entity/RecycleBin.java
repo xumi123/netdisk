@@ -1,28 +1,24 @@
 package com.cuit.netdisk4.Entity;
 
 
-import jakarta.persistence.*;
-import lombok.Data;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 
-import java.sql.Timestamp;
+import java.time.LocalDateTime;
 
 @Entity
-@Table(name = "recycle_bin")
-@Data
 public class RecycleBin {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer recycleId;
+    private Long id;
 
-    @Column(nullable = false)
-    private Integer fileId;
+    private Long fileId;
+    private Long userId;
+    private LocalDateTime deleteTime;
+    private LocalDateTime expireTime;
+    private String deleteReason;
 
-    @Column(nullable = false)
-    private Integer userId;
-
-    @Column(nullable = false, columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP") // 修正插入配置
-    private Timestamp deleteTime;
+    // Getters and Setters
 }
-
-
