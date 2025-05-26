@@ -1,5 +1,5 @@
-import com.example.net_disk.entity.FileShare;
-import com.example.net_disk.service.FileShareService;
+import com.cuit.netdisk4.entity.FileShare;
+import com.cuit.netdisk4.service.FileShareService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
