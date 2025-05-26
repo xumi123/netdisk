@@ -21,9 +21,8 @@ public class RecycleBin {
     @Column(nullable = false)
     private Integer userId;
 
-    @Column(nullable = false, updatable = false, insertable = false, columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
+    @Column(nullable = false, columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP") // 修正插入配置
     private Timestamp deleteTime;
-
 }
 
 
