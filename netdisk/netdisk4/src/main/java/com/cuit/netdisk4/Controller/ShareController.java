@@ -109,7 +109,7 @@ public class ShareController {
     @Operation(summary = "验证分享链接", description = "验证分享链接的有效性，需要提供分享ID和密码（如果有）")
     @Parameters({
             @Parameter(name = "shareId", description = "分享ID", required = true, example = "123"),
-            @Parameter(name = "password", description = "分享密码（如果需要）", required = false, example = "123456")
+            @Parameter(name = "password", description = "分享密码（如果需要）", example = "123456")
     })
     @ApiResponses({
             @ApiResponse(responseCode = "200", description = "验证成功",

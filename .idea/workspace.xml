@@ -4,15 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="02d19288-2921-4cff-883a-5733f6690913" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/netdisk/netdisk4/src/main/java/com/cuit/netdisk4/config/SwaggerConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/netdisk/netdisk4/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/netdisk/netdisk4/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/netdisk/netdisk4/src/main/java/com/cuit/netdisk4/Controller/ShareController.java" beforeDir="false" afterPath="$PROJECT_DIR$/netdisk/netdisk4/src/main/java/com/cuit/netdisk4/Controller/ShareController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/netdisk/netdisk4/src/main/java/com/cuit/netdisk4/Netdisk4Application.java" beforeDir="false" afterPath="$PROJECT_DIR$/netdisk/netdisk4/src/main/java/com/cuit/netdisk4/Netdisk4Application.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/netdisk/netdisk4/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/netdisk/netdisk4/src/main/resources/application.properties" afterDir="false" />
-    </list>
+    <list default="true" id="02d19288-2921-4cff-883a-5733f6690913" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -101,7 +93,7 @@
       <workItem from="1747920097853" duration="1949000" />
       <workItem from="1748001245166" duration="2937000" />
       <workItem from="1748004205628" duration="3998000" />
-      <workItem from="1748255205029" duration="4188000" />
+      <workItem from="1748255205029" duration="4508000" />
     </task>
     <servers />
   </component>
