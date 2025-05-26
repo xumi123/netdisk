@@ -5,20 +5,22 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import lombok.Data;
 
 import java.time.LocalDateTime;
 
 @Entity
-public class RecycleBin {
+@Data
+public class FileShare {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private Long fileId;
     private Long userId;
-    private LocalDateTime deleteTime;
+    private String shareCode;
     private LocalDateTime expireTime;
-    private String deleteReason;
+    private int visitCount;
 
     // Getters and Setters
 }
