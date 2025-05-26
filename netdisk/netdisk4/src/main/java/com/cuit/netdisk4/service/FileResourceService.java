@@ -1,5 +1,5 @@
 
-import com.example.net_disk.entity.FileResource;
+import com.cuit.netdisk4.entity.FileResource;
 
 public interface FileResourceService {
     FileResource uploadFile(Long userId, String fileName, String fileType, String filePath, Long fileSize);
