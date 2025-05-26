@@ -10,7 +10,6 @@ import java.sql.Timestamp;
 @Table(name = "resource_files")
 @Data
 public class ResourceFile {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer fileId;
@@ -18,7 +17,7 @@ public class ResourceFile {
     @Column(nullable = false)
     private Integer userId;
 
-    private Integer folderId;
+    private Integer folderId; // 0表示根目录
 
     @Column(nullable = false, length = 255)
     private String fileName;
@@ -43,6 +42,6 @@ public class ResourceFile {
     @Column(insertable = false, columnDefinition = "TIMESTAMP NULL ON UPDATE CURRENT_TIMESTAMP")
     private Timestamp updateTime;
 
-    // getter/setter 省略，可用IDE自动生成
+    @Column private Boolean deleted = false; // 新增逻辑删除标记
 }
 
