@@ -1,60 +1,35 @@
 package com.cuit.netdisk4.entity;
 
 
-import jakarta.persistence.*;
-import lombok.Data;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 
-import java.sql.Timestamp;
+import java.time.LocalDateTime;
 
-@Data
-@TableName("file_resource")
-@ApiModel("文件资源实体")
-public class FileResource implements Serializable {
-    private static final long serialVersionUID = 1L;
-
-    @TableId(type = IdType.AUTO)
-    @ApiModelProperty("文件ID")
+@Entity
+public class FileResource {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ApiModelProperty("用户ID")
     private Long userId;
-
-    @ApiModelProperty("父目录ID(0表示根目录)")
     private Long parentId;
-
-    @ApiModelProperty("文件名")
     private String fileName;
-
-    @ApiModelProperty("文件类型")
     private String fileType;
-
-    @ApiModelProperty("文件存储路径")
     private String filePath;
-
-    @ApiModelProperty("文件大小(字节)")
     private Long fileSize;
-
-    @ApiModelProperty("文件哈希值")
     private String fileHash;
-
-    @ApiModelProperty("是否为目录")
-    private Boolean isDirectory;
-
-    @ApiModelProperty("是否公开")
-    private Boolean isPublic;
-
-    @ApiModelProperty("预览URL")
+    private boolean isDirectory;
+    private boolean isPublic;
     private String previewUrl;
 
-    @ApiModelProperty("创建时间")
-    private Date createTime;
+    private LocalDateTime createTime;
+    private LocalDateTime updateTime;
 
-    @ApiModelProperty("更新时间")
-    private Date updateTime;
+    private boolean deleted;
+    private LocalDateTime deleteTime;
 
-    @ApiModelProperty("是否删除")
-    private Boolean deleted;
-
-    @ApiModelProperty("删除时间")
-    private Date deleteTime;
+    // Getters and Setters
 }
