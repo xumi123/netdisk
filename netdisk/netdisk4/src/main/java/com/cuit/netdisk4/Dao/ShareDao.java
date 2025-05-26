@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.cuit.netdisk4.Entity.Share;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
@@ -11,6 +12,7 @@ import java.util.List;
  * 分享记录数据访问接口
  */
 @Mapper
+@Repository
 public interface ShareDao extends BaseMapper<Share> {
 
     /**
