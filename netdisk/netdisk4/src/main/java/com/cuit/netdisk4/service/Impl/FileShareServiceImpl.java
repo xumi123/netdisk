@@ -1,8 +1,8 @@
 
 
-import com.example.net_disk.Repository.FileShareRepository;
-import com.example.net_disk.entity.FileShare;
-import com.example.net_disk.service.FileShareService;
+import com.cuit.netdisk4.Repository.FileShareRepository;
+import com.cuit.netdisk4.entity.FileShare;
+import com.cuit.netdisk4.service.FileShareService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
