@@ -1,8 +1,8 @@
 
 
-import com.example.net_disk.Repository.RecycleBinRepository;
-import com.example.net_disk.entity.RecycleBin;
-import com.example.net_disk.service.RecycleBinService;
+import com.cuit.netdisk4.Repository.RecycleBinRepository;
+import com.cuit.netdisk4.entity.RecycleBin;
+import com.cuit.netdisk4.service.RecycleBinService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
