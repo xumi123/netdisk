@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.time.LocalDateTime;
 import java.util.*;
 
 @Service
@@ -57,7 +58,7 @@ public class ShareServiceImpl implements ShareService{
         }
 
         // 检查是否过期
-        if (share.getExpireTime() != null && share.getExpireTime().before(new Date())) {
+        if (share.getExpireTime() != null && share.getExpireTime().isBefore(LocalDateTime.now())) {
             result.put("valid", false);
             result.put("message", "分享已过期");
             return result;

@@ -4,7 +4,10 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import java.time.Instant;
 import java.time.LocalDateTime;
+import java.util.Date;
 
 /**
  * 分享记录表实体类，对应数据库中的share_records表
@@ -47,5 +50,10 @@ public class Share {
     @PrePersist
     protected void onCreate() {
         shareTime = LocalDateTime.now();
+    }
+
+    public LocalDateTime setShareTime(Date date) {
+        Instant instant = date.toInstant();
+        return LocalDateTime.ofInstant(instant, java.time.ZoneId.systemDefault());
     }
 }
