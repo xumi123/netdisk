@@ -1,5 +1,5 @@
-import com.example.net_disk.entity.RecycleBin;
-import com.example.net_disk.service.RecycleBinService;
+import com.cuit.netdisk4.entity.RecycleBin;
+import com.cuit.netdisk4.service.RecycleBinService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
