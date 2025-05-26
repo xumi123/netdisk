@@ -1,6 +1,6 @@
 
 
-import com.example.net_disk.entity.RecycleBin;
+import com.cuit.netdisk4.entity.RecycleBin;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;

@@ -1,9 +1,9 @@
   
 
 
-import com.example.net_disk.Repository.FileResourceRepository;
-import com.example.net_disk.entity.FileResource;
-import com.example.net_disk.service.FileResourceService;
+import com.cuit.netdisk4.Repository.FileResourceRepository;
+import com.cuit.netdisk4.entity.FileResource;
+import com.cuit.netdisk4.service.FileResourceService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
