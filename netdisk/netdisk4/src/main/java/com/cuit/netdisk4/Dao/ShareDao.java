@@ -1,6 +1,5 @@
 package com.cuit.netdisk4.Dao;
 
-import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.cuit.netdisk4.Entity.Share;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
@@ -11,9 +10,8 @@ import java.util.List;
 /**
  * 分享记录数据访问接口
  */
-@Mapper
 @Repository
-public interface ShareDao extends BaseMapper<Share> {
+public interface ShareDao {
 
     /**
      * 根据用户ID查询其创建的所有分享记录
@@ -56,4 +54,39 @@ public interface ShareDao extends BaseMapper<Share> {
      * @return 删除的记录数
      */
     Integer deleteExpiredShares();
+
+    /**
+     * 插入分享记录
+     * @param share 分享记录对象
+     * @return 插入成功的记录数
+     */
+    int insert(Share share);
+
+    /**
+     * 根据分享ID查询分享记录
+     * @param shareId 分享ID
+     * @return 分享记录对象
+     */
+    Share selectById(Integer shareId);
+
+    /**
+     * 根据分享ID更新分享记录
+     * @param share 分享记录对象
+     * @return 更新成功的记录数
+     */
+    int updateById(Share share);
+
+    /**
+     * 根据分享ID删除分享记录
+     * @param shareId 分享ID
+     * @return 删除成功的记录数
+     */
+    int deleteById(Integer shareId);
+
+    /**
+     * 批量删除分享记录
+     * @param shareIds 分享ID列表
+     * @return 删除成功的记录数
+     */
+    int deleteBatchIds(List<Integer> shareIds);
 }

@@ -44,6 +44,47 @@
     <!-- 删除过期的分享记录 -->
     <delete id="deleteExpiredShares">
         DELETE FROM share_records
-        WHERE expire_time IS NOT NULL AND expire_time < NOW()
+        WHERE expire_time IS NOT NULL AND NOW() > expire_time
+    </delete>
+
+    <!-- 插入分享记录 -->
+    <insert id="insert" parameterType="com.cuit.netdisk4.Entity.Share">
+        INSERT INTO share_records (user_id, file_id, share_time, expire_time, share_type, share_password, receiver_id, access_permission)
+        VALUES (#{userId}, #{fileId}, #{shareTime}, #{expireTime}, #{shareType}, #{sharePassword}, #{receiverId}, #{accessPermission})
+    </insert>
+
+    <!-- 根据分享ID查询分享记录 -->
+    <select id="selectById" resultType="com.cuit.netdisk4.Entity.Share">
+        SELECT * FROM share_records
+        WHERE share_id = #{shareId}
+    </select>
+
+    <!-- 根据分享ID更新分享记录 -->
+    <update id="updateById" parameterType="com.cuit.netdisk4.Entity.Share">
+        UPDATE share_records
+        SET user_id = #{userId},
+            file_id = #{fileId},
+            share_time = #{shareTime},
+            expire_time = #{expireTime},
+            share_type = #{shareType},
+            share_password = #{sharePassword},
+            receiver_id = #{receiverId},
+            access_permission = #{accessPermission}
+        WHERE share_id = #{shareId}
+    </update>
+
+    <!-- 根据分享ID删除分享记录 -->
+    <delete id="deleteById" parameterType="java.lang.Integer">
+        DELETE FROM share_records
+        WHERE share_id = #{shareId}
+    </delete>
+
+    <!-- 批量删除分享记录 -->
+    <delete id="deleteBatchIds" parameterType="java.util.List">
+        DELETE FROM share_records
+        WHERE share_id IN
+        <foreach collection="list" item="shareId" open="(" separator="," close=")">
+            #{shareId}
+        </foreach>
     </delete>
 </mapper>

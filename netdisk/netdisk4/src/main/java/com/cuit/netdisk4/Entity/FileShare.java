@@ -1,4 +1,4 @@
-package com.cuit.netdisk4.Entity
+package com.cuit.netdisk4.Entity;
 
 
 import jakarta.persistence.Entity;
