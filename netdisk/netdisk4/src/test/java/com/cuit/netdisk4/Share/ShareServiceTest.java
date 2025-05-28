@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -81,7 +82,11 @@ public class ShareServiceTest {
 
     @Test
     public void testBatchDeleteShares() {
-        boolean success = shareService.batchDeleteShares(List.of(1, 2, 3));
+        List<Integer> shareIds = new ArrayList<>();
+        shareIds.add(1);
+        shareIds.add(2);
+        shareIds.add(3);
+        boolean success = shareService.batchDeleteShares(shareIds);
         assertTrue(success);
     }
 
