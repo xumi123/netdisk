@@ -66,7 +66,7 @@
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
-            <version>1.18.26</version>
+            <version>1.18.30</version>
         </dependency>
 
         <!-- 显式声明 Logback 1.4+（与 Spring Boot 3.4.5 兼容） -->
