@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="login">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/netdisk-frontend-master/src/views/login.zip!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
