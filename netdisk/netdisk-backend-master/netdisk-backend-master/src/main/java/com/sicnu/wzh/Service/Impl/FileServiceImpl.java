@@ -454,6 +454,11 @@ public class FileServiceImpl extends ServiceImpl<FileMapper, FileEntity> impleme
         return files;
     }
 
+    @Override
+    public List<FileEntity> searchFilesByContent(String keyword) {
+        return fileMapper.searchFilesByContent(keyword);
+    }
+
 
     /**
      * 根据文件后缀获取文件类型

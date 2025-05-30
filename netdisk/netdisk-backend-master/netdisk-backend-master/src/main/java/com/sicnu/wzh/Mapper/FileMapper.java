@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.sicnu.wzh.Entity.FileEntity;
 import com.sicnu.wzh.Entity.ThumbnailEntity;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -22,4 +23,6 @@ public interface FileMapper extends BaseMapper<FileEntity> {
     public ThumbnailEntity selectThumbnailByPicId(String id);
 
     public List<FileEntity> selectByUserId(String userId);
+
+    List<FileEntity> searchFilesByContent(@Param("keyword") String keyword);
 }

@@ -40,6 +40,10 @@
         ) and is_delete = 0
     </select>
 
+    <select id="searchFilesByContent" resultMap="File">
+        SELECT * FROM `file` WHERE MATCH(content) AGAINST(#{keyword} IN NATURAL LANGUAGE MODE)
+    </select>
+
 <!--    <select id="selectByUserId" parameterType="String" resultMap="File">-->
 <!--    select user_file.file_name , user_file.file_id , file_location , file_size,-->
 <!--           file.create_time, file.update_time , md5,minetype,user_file.is_delete-->

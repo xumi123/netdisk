@@ -281,4 +281,10 @@ public class FileController {
         }
 
     }
+    @CostTime
+    @GetMapping("/search")
+    public HttpResonse searchFilesByContent(@Param("keyword") String keyword) {
+        List<FileEntity> files = fileService.searchFilesByContent(keyword);
+        return HttpResonse.success().setMsg("检索成功").setData(files);
+    }
 }

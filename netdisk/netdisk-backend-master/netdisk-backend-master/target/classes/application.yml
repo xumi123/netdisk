@@ -8,9 +8,9 @@ server:
 
 spring:
   datasource:
-    url: jdbc:mysql://192.168.232.0:3306/qd?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC
+    url: jdbc:mysql://192.168.206.182:3308/netdisk?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC
     username: root
-    password: your_password
+    password: 123456
   servlet:
     multipart:
       max-file-size: 10GB

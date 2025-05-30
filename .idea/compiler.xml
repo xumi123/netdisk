@@ -8,11 +8,13 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="netdisk4" />
+        <module name="netdisk-file" />
       </profile>
     </annotationProcessing>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="netdisk-file" options="-parameters" />
       <module name="netdisk4" options="-parameters" />
     </option>
   </component>

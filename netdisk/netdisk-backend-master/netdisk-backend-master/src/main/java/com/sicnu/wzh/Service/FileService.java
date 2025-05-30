@@ -51,4 +51,6 @@ public interface FileService extends IService<FileEntity> {
     public void chunkDownload(String u2fid , HttpServletResponse response, HttpServletRequest request);
 
     public List<FileEntity> selectFilesByUserId(String userId);
+
+    List<FileEntity> searchFilesByContent(String keyword);
 }

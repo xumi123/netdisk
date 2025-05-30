@@ -315,3 +315,10 @@ CREATE TABLE `user_permission`  (
 ) ENGINE = InnoDB AUTO_INCREMENT = 157 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 SET FOREIGN_KEY_CHECKS = 1;
+
+
+
+
+ALTER TABLE file ADD COLUMN content TEXT;
+
+ALTER TABLE file ADD FULLTEXT(content);
