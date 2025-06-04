@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sicnu.wzh.Mapper.UserFavoriteMapper">
+
+    <!-- 根据用户ID查询所有收藏 -->
+    <select id="selectByUserId" resultType="com.sicnu.wzh.Entity.UserFavorite">
+        SELECT * FROM user_favorites WHERE user_id = #{userId}
+    </select>
+
+    <!-- 根据用户ID和文件ID查询收藏记录 -->
+    <select id="selectByUserIdAndFileId" resultType="com.sicnu.wzh.Entity.UserFavorite">
+        SELECT * FROM user_favorites
+        WHERE user_id = #{userId} AND file_id = #{fileId}
+    </select>
+
+    <!-- 根据用户ID和文件夹ID查询收藏记录 -->
+    <select id="selectByUserIdAndFolderId" resultType="com.sicnu.wzh.Entity.UserFavorite">
+        SELECT * FROM user_favorites
+        WHERE user_id = #{userId} AND folder_id = #{folderId}
+    </select>
+
+    <!-- 统计用户收藏总数 -->
+    <select id="countByUserId" resultType="java.lang.Integer">
+        SELECT COUNT(*) FROM user_favorites WHERE user_id = #{userId}
+    </select>
+
+    <!-- 批量删除用户收藏 -->
+    <delete id="deleteBatchByUserId">
+        DELETE FROM user_favorites WHERE user_id = #{userId}
+    </delete>
+</mapper>
