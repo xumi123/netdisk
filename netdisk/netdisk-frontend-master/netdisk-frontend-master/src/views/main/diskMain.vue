@@ -32,44 +32,7 @@
 </template>
 
 <script>
-  import { addToFavorite, removeFromFavorite } from '@/utils/FileRequest';
-
-  export default {
-  name: 'diskMain',
-  data() {
-  return {
-  fileList: [],
-};
-},
-  methods: {
-  toggleFavorite(fileId) {
-  const file = this.fileList.find((item) => item.id === fileId);
-  if (file.isFavorite) {
-  removeFromFavorite(fileId).then((res) => {
-  if (res.code === 1) {
-  file.isFavorite = false;
-  this.$message.success('已取消收藏');
-} else {
-  this.$message.error('取消收藏失败');
-}
-});
-} else {
-  addToFavorite(fileId).then((res) => {
-  if (res.code === 1) {
-  file.isFavorite = true;
-  this.$message.success('已收藏');
-} else {
-  this.$message.error('收藏失败');
-}
-});
-}
-},
-},
-};
-</script>
-
-
-
+import { addToFavorite, removeFromFavorite } from '@/utils/FileRequest';
 import Fileservice from "../../utils/FileRequest";
 import disk from "./components/disk";
 export default {
@@ -142,6 +105,26 @@ export default {
     },
     setFileList(val){
       this.fileList = val
+    },
+    toggleFavorite(fileId) {
+      const file = this.fileList.find((item) => item.id === fileId);
+      if (!file) return;
+
+      const action = file.isFavorite ? removeFromFavorite : addToFavorite;
+      const successMsg = file.isFavorite ? '已取消收藏' : '已收藏';
+      const errorMsg = file.isFavorite ? '取消收藏失败' : '收藏失败';
+
+      action(fileId).then((res) => {
+        if (res.code === 1) {
+          file.isFavorite = !file.isFavorite;
+          this.$message.success(successMsg);
+        } else {
+          this.$message.error(errorMsg);
+        }
+      }).catch(err => {
+        this.$message.error('操作失败，请重试');
+        console.error(err);
+      });
     },
     getFiles(folder){
       this.fileListLoading = true
