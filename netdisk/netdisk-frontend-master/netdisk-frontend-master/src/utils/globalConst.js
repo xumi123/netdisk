@@ -27,8 +27,6 @@ export const FILE_TYPE = {
   SHARE: "SHARE",
   // 回收站文件类型
   RECYCLE: "RECYCLE",
-  // ... 原有类型 ...
-  FAVORITE: "FAVORITE",
 }
 
 // 操作类型，折叠，展开
@@ -50,7 +48,6 @@ export const FILE_TYPE_MAP = {
   "OTHER": '其他',
   "SHARE": '共享文件',
   "RECYCLE": '回收站',
-  "FAVORITE": '收藏文件'
 }
 
 export const FAVORITE_FOLDER_ID = 123;

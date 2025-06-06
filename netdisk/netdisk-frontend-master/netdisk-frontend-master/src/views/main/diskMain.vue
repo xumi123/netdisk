@@ -18,246 +18,217 @@
           @getDocuments="getDocuments"
           @handleLogout="handleLogout"
           ref="disk"/>
-    <el-table :data="fileList">
-      <el-table-column prop="name" label="文件名"></el-table-column>
-      <el-table-column label="操作">
-        <template slot-scope="scope">
-          <el-button @click="toggleFavorite(scope.row.id)" type="text">
-            {{ scope.row.isFavorite ? '取消收藏' : '收藏' }}
-          </el-button>
-        </template>
-      </el-table-column>
-    </el-table>
   </div>
 </template>
 
 <script>
-import { addToFavorite, removeFromFavorite } from '@/utils/FileRequest';
+
+
 import Fileservice from "../../utils/FileRequest";
 import disk from "./components/disk";
 export default {
-  name: 'diskMain',
-  components: {disk},
-  data() {
-    return {
-      fileListLoading: true,
-      uploadFile:{},
-      newPathTree: [],
-      currentFolder:{
-        id:'',
-        name:''
-      },
-      userId: localStorage.getItem('userId'),
-      username: localStorage.getItem('username'),
-      // userId: '9d164a8092f949b38daa819813d5db01',
-      // userId: 'c8eade1f673041dd86a937e03a0c8350',
-      defaultProps: {
-        children: 'subs',
-        label: 'name'
-      },
-      //  移动文件模态框数据
-      fileList: [{
-        id:'',
-        name:'',
-        size:'',
-        type:'',
-        subs:[],
-        createTime:'',
-        updateTime:''
-      }],
-      pathTree: [{
-        id:'',
-        name:'',
-        size:'',
-        type:'',
-        subs:[],
-        createTime:'',
-        updateTime:''
-      }],
-      dialogMoveFile: {
-        isBatchMove: false,
-        visible: false, //  是否可见
-        fileTree: [], //  目录树
-        defaultProps: {
-          children: 'children',
-          label: 'label',
-          type: 'type'
-        }
-      },
-      viewFilePath: '',
-    }
-  },
-  computed: {},
-  created() {
-    this.getFiles()
-    this.getPathTree()
-  },
-  methods: {
-    setFileListLoading(val) {
-      this.fileListLoading = val
-    },
-    handleLogout() {
-      localStorage.clear()
-      this.$router.push('/')
-    },
-    setCurrentFolder(val){
-      this.currentFolder = val
-    },
-    setFileList(val){
-      this.fileList = val
-    },
-    toggleFavorite(fileId) {
-      const file = this.fileList.find((item) => item.id === fileId);
-      if (!file) return;
-
-      const action = file.isFavorite ? removeFromFavorite : addToFavorite;
-      const successMsg = file.isFavorite ? '已取消收藏' : '已收藏';
-      const errorMsg = file.isFavorite ? '取消收藏失败' : '收藏失败';
-
-      action(fileId).then((res) => {
-        if (res.code === 1) {
-          file.isFavorite = !file.isFavorite;
-          this.$message.success(successMsg);
-        } else {
-          this.$message.error(errorMsg);
-        }
-      }).catch(err => {
-        this.$message.error('操作失败，请重试');
-        console.error(err);
-      });
-    },
-    getFiles(folder){
-      this.fileListLoading = true
-      Fileservice({
-        url: "/api/disk/" + this.userId,
-        method: 'get',
-        params: {
-          folderId: folder
-        }
-      }).then(res=>{
-        this.fileList = res.data.subs
-        this.pathTree = new Array(res.data)
-        this.currentFolder.id = res.data.id
-        this.currentFolder.name = res.data.name
-        this.$nextTick(() => {
-          // this.$refs.tree.filter('FOLDER');
-          this.$refs.disk.$refs.filelist.$refs.tree.filter('FOLDER')
-        })
-        this.fileListLoading = false
-      })
-    },
-    getPics(folder){
-      this.fileListLoading = true
-      Fileservice({
-        url: "/api/disk/image/" + this.userId,
-        method: 'get',
-        params: {
-          folderId : folder
-        }
-      }).then(res=>{
-        this.fileList = res.data.subs
-        this.pathTree = new Array(res.data)
-        this.currentFolder.id = res.data.id
-        this.currentFolder.name = res.data.name
-        this.$nextTick(() => {
-          // this.$refs.tree.filter('FOLDER');
-          this.$refs.disk.$refs.filelist.$refs.tree.filter('FOLDER')
-        })
-        this.fileListLoading = false
-      })
-    },
-    getVideos(folder){
-      this.fileListLoading = true
-      Fileservice({
-        url : "/api/disk/video/" + this.userId,
-        method: "get",
-        params: {
-          folderId: folder
-        }
-      }).then(res=>{
-        this.fileList = res.data.subs
-        this.pathTree = new Array(res.data)
-        this.currentFolder.id = res.data.id
-        this.currentFolder.name = res.data.name
-        this.$nextTick(() => {
-          // this.$refs.tree.filter('FOLDER');
-          this.$refs.disk.$refs.filelist.$refs.tree.filter('FOLDER')
-        })
-        this.fileListLoading = false
-      })
-    },
-    getMusics(folder){
-      this.fileListLoading = true
-      Fileservice({
-        url: "/api/disk/music/" + this.userId,
-        method: 'get',
-        params: {
-          folderId : folder
-        }
-      }).then(res=>{
-        this.fileList = res.data.subs
-        this.pathTree = new Array(res.data)
-        this.currentFolder.id = res.data.id
-        this.currentFolder.name = res.data.name
-        this.$nextTick(() => {
-          // this.$refs.tree.filter('FOLDER');
-          this.$refs.disk.$refs.filelist.$refs.tree.filter('FOLDER')
-        })
-        this.fileListLoading = false
-      })
-    },
-    getDocuments(folder){
-      this.fileListLoading = true
-      Fileservice({
-        url: "/api/disk/document/" + this.userId,
-        method: 'get',
-        params: {
-          folderId: folder
-        }
-      }).then(res=>{
-        this.fileList = res.data.subs
-        this.pathTree = new Array(res.data)
-        this.currentFolder.id = res.data.id
-        this.currentFolder.name = res.data.name
-        this.$nextTick(() => {
-          // this.$refs.tree.filter('FOLDER');
-          this.$refs.disk.$refs.filelist.$refs.tree.filter('FOLDER')
-        })
-        this.fileListLoading = false
-      })
-    },
-    getExe(folder){
-      this.fileListLoading = true
-      Fileservice({
-        url: "/api/disk/execute/" + this.userId,
-        method: 'get',
-        params: {
-          folderId: folder
-        }
-      }).then(res=>{
-        this.fileList = res.data.subs
-        this.pathTree = new Array(res.data)
-        this.currentFolder.id = res.data.id
-        this.currentFolder.name = res.data.name
-        this.$nextTick(() => {
-          // this.$refs.tree.filter('FOLDER');
-          this.$refs.disk.$refs.filelist.$refs.tree.filter('FOLDER')
-        })
-        this.fileListLoading = false
-      })
-    },
-    getPathTree() {
-      Fileservice({
-        url: 'api/disk/folder/' + localStorage.getItem('userId'),
-        method: 'get'
-      }).then(res=>{
-        if (res.code === 1) {
-          console.log(res.data)
-          this.newPathTree = new Array(res.data)
-        }
-      })
-    }
-  }
+name: 'diskMain',
+components: {disk},
+data() {
+return {
+fileListLoading: true,
+uploadFile:{},
+newPathTree: [],
+currentFolder:{
+id:'',
+name:''
+},
+userId: localStorage.getItem('userId'),
+username: localStorage.getItem('username'),
+// userId: '9d164a8092f949b38daa819813d5db01',
+// userId: 'c8eade1f673041dd86a937e03a0c8350',
+defaultProps: {
+children: 'subs',
+label: 'name'
+},
+//  移动文件模态框数据
+fileList: [{
+id:'',
+name:'',
+size:'',
+type:'',
+subs:[],
+createTime:'',
+updateTime:''
+}],
+pathTree: [{
+id:'',
+name:'',
+size:'',
+type:'',
+subs:[],
+createTime:'',
+updateTime:''
+}],
+dialogMoveFile: {
+isBatchMove: false,
+visible: false, //  是否可见
+fileTree: [], //  目录树
+defaultProps: {
+children: 'children',
+label: 'label',
+type: 'type'
+}
+},
+viewFilePath: '',
+}
+},
+computed: {},
+created() {
+this.getFiles()
+this.getPathTree()
+},
+methods: {
+setFileListLoading(val) {
+this.fileListLoading = val
+},
+handleLogout() {
+localStorage.clear()
+this.$router.push('/')
+},
+setCurrentFolder(val){
+this.currentFolder = val
+},
+setFileList(val){
+this.fileList = val
+},
+getFiles(folder){
+this.fileListLoading = true
+Fileservice({
+url: "/api/disk/" + this.userId,
+method: 'get',
+params: {
+folderId: folder
+}
+}).then(res=>{
+this.fileList = res.data.subs
+this.pathTree = new Array(res.data)
+this.currentFolder.id = res.data.id
+this.currentFolder.name = res.data.name
+this.$nextTick(() => {
+// this.$refs.tree.filter('FOLDER');
+this.$refs.disk.$refs.filelist.$refs.tree.filter('FOLDER')
+})
+this.fileListLoading = false
+})
+},
+getPics(folder){
+this.fileListLoading = true
+Fileservice({
+url: "/api/disk/image/" + this.userId,
+method: 'get',
+params: {
+folderId : folder
+}
+}).then(res=>{
+this.fileList = res.data.subs
+this.pathTree = new Array(res.data)
+this.currentFolder.id = res.data.id
+this.currentFolder.name = res.data.name
+this.$nextTick(() => {
+// this.$refs.tree.filter('FOLDER');
+this.$refs.disk.$refs.filelist.$refs.tree.filter('FOLDER')
+})
+this.fileListLoading = false
+})
+},
+getVideos(folder){
+this.fileListLoading = true
+Fileservice({
+url : "/api/disk/video/" + this.userId,
+method: "get",
+params: {
+folderId: folder
+}
+}).then(res=>{
+this.fileList = res.data.subs
+this.pathTree = new Array(res.data)
+this.currentFolder.id = res.data.id
+this.currentFolder.name = res.data.name
+this.$nextTick(() => {
+// this.$refs.tree.filter('FOLDER');
+this.$refs.disk.$refs.filelist.$refs.tree.filter('FOLDER')
+})
+this.fileListLoading = false
+})
+},
+getMusics(folder){
+this.fileListLoading = true
+Fileservice({
+url: "/api/disk/music/" + this.userId,
+method: 'get',
+params: {
+folderId : folder
+}
+}).then(res=>{
+this.fileList = res.data.subs
+this.pathTree = new Array(res.data)
+this.currentFolder.id = res.data.id
+this.currentFolder.name = res.data.name
+this.$nextTick(() => {
+// this.$refs.tree.filter('FOLDER');
+this.$refs.disk.$refs.filelist.$refs.tree.filter('FOLDER')
+})
+this.fileListLoading = false
+})
+},
+getDocuments(folder){
+this.fileListLoading = true
+Fileservice({
+url: "/api/disk/document/" + this.userId,
+method: 'get',
+params: {
+folderId: folder
+}
+}).then(res=>{
+this.fileList = res.data.subs
+this.pathTree = new Array(res.data)
+this.currentFolder.id = res.data.id
+this.currentFolder.name = res.data.name
+this.$nextTick(() => {
+// this.$refs.tree.filter('FOLDER');
+this.$refs.disk.$refs.filelist.$refs.tree.filter('FOLDER')
+})
+this.fileListLoading = false
+})
+},
+getExe(folder){
+this.fileListLoading = true
+Fileservice({
+url: "/api/disk/execute/" + this.userId,
+method: 'get',
+params: {
+folderId: folder
+}
+}).then(res=>{
+this.fileList = res.data.subs
+this.pathTree = new Array(res.data)
+this.currentFolder.id = res.data.id
+this.currentFolder.name = res.data.name
+this.$nextTick(() => {
+// this.$refs.tree.filter('FOLDER');
+this.$refs.disk.$refs.filelist.$refs.tree.filter('FOLDER')
+})
+this.fileListLoading = false
+})
+},
+getPathTree() {
+Fileservice({
+url: 'api/disk/folder/' + localStorage.getItem('userId'),
+method: 'get'
+}).then(res=>{
+if (res.code === 1) {
+console.log(res.data)
+this.newPathTree = new Array(res.data)
+}
+})
+}
+}
 }
 </script>
 
