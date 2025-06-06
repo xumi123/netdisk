@@ -18,10 +18,55 @@
           @getDocuments="getDocuments"
           @handleLogout="handleLogout"
           ref="disk"/>
+    <el-table :data="fileList">
+      <el-table-column prop="name" label="文件名"></el-table-column>
+      <el-table-column label="操作">
+        <template slot-scope="scope">
+          <el-button @click="toggleFavorite(scope.row.id)" type="text">
+            {{ scope.row.isFavorite ? '取消收藏' : '收藏' }}
+          </el-button>
+        </template>
+      </el-table-column>
+    </el-table>
   </div>
 </template>
 
 <script>
+  import { addToFavorite, removeFromFavorite } from '@/utils/FileRequest';
+
+  export default {
+  name: 'diskMain',
+  data() {
+  return {
+  fileList: [],
+};
+},
+  methods: {
+  toggleFavorite(fileId) {
+  const file = this.fileList.find((item) => item.id === fileId);
+  if (file.isFavorite) {
+  removeFromFavorite(fileId).then((res) => {
+  if (res.code === 1) {
+  file.isFavorite = false;
+  this.$message.success('已取消收藏');
+} else {
+  this.$message.error('取消收藏失败');
+}
+});
+} else {
+  addToFavorite(fileId).then((res) => {
+  if (res.code === 1) {
+  file.isFavorite = true;
+  this.$message.success('已收藏');
+} else {
+  this.$message.error('收藏失败');
+}
+});
+}
+},
+},
+};
+</script>
 
 
 

@@ -8,6 +8,39 @@ const Fileservice = axios.create({
   timeout: 1000000000
 })
 
+export const addToFavorite = (fileId) => {
+  return Fileservice({
+    url: 'http://127.0.0.1:8989/favorite/add',
+    method: 'post',
+    params: {
+      fileId: fileId,
+      folderId: FAVORITE_FOLDER_ID, // 收藏文件夹 ID
+    },
+  });
+};
+
+export const removeFromFavorite = (fileId) => {
+  return Fileservice({
+    url: 'http://127.0.0.1:8989/favorite/remove',
+    method: 'post',
+    params: {
+      fileId: fileId,
+      folderId: FAVORITE_FOLDER_ID, // 收藏文件夹 ID
+    },
+  });
+};
+
+export const searchFiles = (keyword) => {
+  return Fileservice({
+    url: 'http://127.0.0.1:8989/search',
+    method: 'get',
+    params: {
+      keyword: keyword,
+    },
+  });
+};
+
+
 
 Fileservice.interceptors.request.use(
   config => {
